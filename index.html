@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Isobar</title>
+<meta name="description" content="Isobar: het gemiddelde van zes weermodellen, van een maand terug tot zes weken vooruit.">
+<meta name="theme-color" content="#0A1422">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Isobar">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="map" aria-hidden="true"></canvas>
+
+<header id="top">
+  <button id="locBtn" aria-label="Locatie kiezen">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <span id="locName">Isobar</span>
+  </button>
+  <span id="upd"></span>
+  <button id="mapBtn">Kaart</button>
+</header>
+<div id="mapTime" aria-live="polite"></div>
+
+<main id="scroll">
+  <section id="s-terug"></section>
+  <section id="s-nu"><div class="hero"><div class="cond">Weer ophalen…</div></div></section>
+  <section id="s-14"></section>
+  <section id="s-6w"></section>
+  <section id="s-mod"></section>
+</main>
+
+<nav id="tabs" aria-label="Tijdlijn">
+  <button data-go="s-terug">Terug</button>
+  <button data-go="s-nu" class="on">Nu</button>
+  <button data-go="s-14">14 dagen</button>
+  <button data-go="s-6w">6 weken</button>
+  <button data-go="s-mod">Modellen</button>
+</nav>
+
+<div id="mapUI">
+  <div id="mapLabel"></div>
+  <label class="sr" for="mapSlider">Tijdstip op de kaart</label>
+  <input id="mapSlider" type="range">
+  <div class="mapRow"><span>week terug</span><span>10 dagen vooruit</span></div>
+  <div class="mapBtns"><button id="mapPlay" class="btn">Afspelen</button><button id="mapClose" class="btn solid">Sluiten</button></div>
+</div>
+
+<div id="sheet" hidden>
+  <div class="sheetIn">
+    <div class="ctitle">Locaties<button id="sheetClose" class="btn">Klaar</button></div>
+    <div id="locList"></div>
+    <label class="sr" for="locQ">Plaats zoeken</label>
+    <input id="locQ" type="search" placeholder="Plaats toevoegen…" autocomplete="off">
+    <div id="locRes"></div>
+    <button id="locHere" class="btn wide">Gebruik mijn huidige locatie</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/text.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/map.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
