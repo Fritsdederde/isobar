@@ -242,15 +242,14 @@ var W = window.W || (window.W = {});
     if (pending) return; pending = true;
     requestAnimationFrame(function () {
       pending = false;
-      var S = W.S, sc = $('scroll'), nu = $('s-nu'), before = nu.offsetTop;
+      var S = W.S, sc = $('scroll');
       try {
         if (S.hours && S.hours.length) { renderNu(S); render14(S); renderMod(S); }
         else if (S.errors.length) $('s-nu').innerHTML = '<div class="hero"><div class="cond">Geen verbinding</div><div class="sub">De weerdata kon niet worden opgehaald. Controleer je internet.</div><button id="refresh" class="btn">Opnieuw proberen</button></div>';
         if (S.hist) renderTerug(S);
         if (S.long) render6w(S);
       } catch (e) { console.error(e); }
-      if (!ui.scrolled) { ui.auto = true; sc.scrollTop = nu.offsetTop - 56; }
-      else if (sc.scrollTop >= before - 60) { ui.auto = true; sc.scrollTop += nu.offsetTop - before; }
+      if (!ui.scrolled) { ui.auto = true; sc.scrollTop = 0; }
       $('locName').textContent = S.loc.name;
       $('upd').textContent = S.updated ? (S.stale ? 'offline · ' : '') + F.uur(S.updated + S.off) : '';
       if (S.press) W.map.setData(S.press);
@@ -272,14 +271,14 @@ var W = window.W || (window.W = {});
   function onScroll() {
     var S = W.S; if (!S || ui.mapMode) return;
     var sc = $('scroll'), mid = window.innerHeight * 0.45, now = nowP(S), best = null;
-    ['s-terug', 's-nu', 's-14', 's-6w', 's-mod'].forEach(function (id) {
+    ['s-nu', 's-14', 's-6w', 's-terug', 's-mod'].forEach(function (id) {
       var r = $(id).getBoundingClientRect();
       if (r.top <= mid && r.bottom > mid) best = { id: id, r: r };
     });
-    if (!best) best = { id: sc.scrollTop < 100 ? 's-terug' : 's-mod', r: null };
+    if (!best) best = { id: sc.scrollTop < 100 ? 's-nu' : 's-mod', r: null };
     document.querySelectorAll('#tabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.go === best.id); });
     var t = now;
-    if (best.id === 's-terug' && best.r) t = now - Math.max(0, Math.min(1, (best.r.bottom - mid) / best.r.height)) * 7 * DAY;
+    if (best.id === 's-terug' && best.r) t = now - Math.max(0, Math.min(1, (mid - best.r.top) / best.r.height)) * 7 * DAY;
     else if (best.id === 's-nu') {
       var hsEl = $('hstrip');
       if (hsEl && hsEl.scrollLeft > 20) { var c = hsEl.children[Math.round(hsEl.scrollLeft / 62)]; if (c) t = +c.dataset.t; }

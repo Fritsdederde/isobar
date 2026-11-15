@@ -33,7 +33,6 @@ body.loading #upd::after { content: " · laden"; }
   padding: 56px 0 calc(96px + var(--sab)); transition: opacity .3s; scrollbar-width: none; }
 #scroll::-webkit-scrollbar { display: none; }
 section { max-width: 520px; margin: 0 auto; padding: 0 14px; }
-#s-terug { padding-top: 8px; }
 h2 { font: 600 26px var(--disp); margin: 34px 6px 12px; text-shadow: 0 2px 12px rgba(5,10,18,.8); }
 .card { background: var(--card); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 22px; padding: 16px; margin-bottom: 12px; }
 .card.nopad { padding: 16px 0; } .pad { padding: 0 16px; }

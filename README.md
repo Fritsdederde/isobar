@@ -7,7 +7,7 @@ Eigen weerapp van Ray. Combineert zes weermodellen tot één verwachting en laat
 - **Buiten**: kies een dag en Fietsen, Wandelen, MTB of Paarden → cijfer (1–10) en een kort praatje. Paarden en MTB wegen kou, wind, gevoelstemperatuur, regen en drassigheid (regen van de 7 dagen ervoor).
 - **14 dagen**: min/max per dag. Strak getekend = modellen eens, wazig = onzeker.
 - **6 weken**: trend voor temperatuur, neerslag en wind, met spreiding en normaal.
-- **Terugkijken**: mm regen per dag (7 dagen en 4 weken), tegenover normaal en vorig jaar.
+- **Terugkijken** (na 6 weken): mm regen per dag (7 dagen en 4 weken), tegenover normaal en vorig jaar.
 - **Modellen**: de zes modellen naast elkaar en "Wie had gelijk?" (weegt mee in het gemiddelde).
 - **Achtergrond**: echte luchtdrukkaart (isobaren, H/L). Beweegt mee met scrollen; knop "Kaart" voor de volledige kaart met tijdschuif.
 

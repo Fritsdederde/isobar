@@ -1,5 +1,5 @@
 /* Isobar — service worker: de app zelf werkt ook zonder internet (weerdata komt dan uit de laatste keer) */
-const VERSION = 'isobar-v2';
+const VERSION = 'isobar-v3';
 const SHELL = ['./', 'index.html', 'style.css', 'js/data.js', 'js/text.js', 'js/geo.js', 'js/map.js', 'js/ui.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-180.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => {
